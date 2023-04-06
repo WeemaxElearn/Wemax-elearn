@@ -4,7 +4,7 @@ class VideoCta extends Component {
   constructor() {
     super();
     this.state = {
-      isOpen: false
+      isOpen: false,
     };
     this.openModal = this.openModal.bind(this);
   }
@@ -26,9 +26,14 @@ class VideoCta extends Component {
                     Best E-learning Portal
                   </h3>
                   <p className="video-cta-content__text">
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit sed
-                    do eiusmod tempor incididunt ut labore et dolore magna
-                    aliqua. Ut enim ad minim
+                    Welcome to the Best E-learning Portal, a platform designed
+                    to provide high-quality educational content to students and
+                    professionals around the world. Our goal is to offer a
+                    diverse range of courses that cater to the needs of learners
+                    from all backgrounds and interests. Whether you're looking
+                    to acquire new skills for personal or professional growth,
+                    or seeking to enhance your existing knowledge, we have
+                    something for everyone.
                   </p>
                   <a
                     href={`${process.env.PUBLIC_URL}/contact-us`}

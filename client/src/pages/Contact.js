@@ -1,46 +1,62 @@
-import React, {Component} from 'react';
-import NavBar from '../components/NavBar';
-import Footer from '../components/Footer';
-import MobileMenu from '../components/MobileMenu';
-class Contact extends Component{
-    render(){
-        return(
-            <div>
-                {/* Navigation bar */}
-                <NavBar/>
+import React, { Component } from "react";
+import NavBar from "../components/NavBar";
+import Footer from "../components/Footer";
+import MobileMenu from "../components/MobileMenu";
+class Contact extends Component {
+  render() {
+    return (
+      <div>
+        {/* Navigation bar */}
+        <NavBar />
 
-                {/* breadcrumb */}
-                {/*====================  breadcrumb area ====================*/}
-                <div className="breadcrumb-area breadcrumb-bg">
-                    <div className="container">
-                        <div className="row">
-                            <div className="col">
-                                <div className="page-banner text-center">
-                                    <h1>Contact Us</h1>
-                                    <ul className="page-breadcrumb">
-                                        <li><a href="/">Home</a></li>
-                                        <li>Contact Us</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        {/* breadcrumb */}
+        {/*====================  breadcrumb area ====================*/}
+        <div className="breadcrumb-area breadcrumb-bg">
+          <div className="container">
+            <div className="row">
+              <div className="col">
+                <div className="page-banner text-center">
+                  <h1>Contact Us</h1>
+                  <ul className="page-breadcrumb">
+                    <li>
+                      <a href="/">Home</a>
+                    </li>
+                    <li>Contact Us</li>
+                  </ul>
                 </div>
-                {/*====================  End of breadcrumb area  ====================*/}
+              </div>
+            </div>
+          </div>
+        </div>
+        {/*====================  End of breadcrumb area  ====================*/}
 
-                {/*====================  content page content ====================*/}
-                <div className="page-wrapper section-space--inner--120">
-                {/*Contact section start*/}
-                <div className="conact-section">
-                    <div className="container">
-                    <div className="row section-space--bottom--50">
-                        <div className="col">
-                            <div className="contact-map">
-                            <iframe title="google-map" src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d392436.93004030554!2d-105.13838587646829!3d39.7265847007123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1558429398879!5m2!1sen!2sbd" allowFullScreen></iframe>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="row">
+        {/*====================  content page content ====================*/}
+        <div className="page-wrapper section-space--inner--120">
+          {/*Contact section start*/}
+          <div className="conact-section">
+            <div className="container">
+              <div className="row section-space--bottom--50">
+                <div className="col">
+                  <div className="contact-map">
+                    <iframe
+                      title="google-map"
+                      src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d392436.93004030554!2d-105.13838587646829!3d39.7265847007123!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sbd!4v1558429398879!5m2!1sen!2sbd"
+                      allowFullScreen
+                    ></iframe>
+                  </div>
+                </div>
+              </div>
+              <center>
+                <a href="http://wa.me/917904834579" className="w-25">
+                  <button
+                    style={{ fontSize: "22px" }}
+                    className="btn btn-success rounded-pill   p-4 fs-6 font-weight-bolder  "
+                  >
+                    Whatsapp
+                  </button>
+                </a>
+              </center>
+              {/* <div className="row">
                         <div className="col-lg-4 col-12">
                         <div className="contact-information">
                             <h3>Contact Information</h3>
@@ -73,23 +89,21 @@ class Contact extends Component{
                             </form>
                         </div>
                         </div>
-                    </div>
-                    </div>
-                </div>
-                {/*Contact section end*/}
-                </div>
-                {/*====================  End of content page content  ====================*/}
-                
-                {/* Footer */}
-                <Footer/>
-
-                {/* Mobile Menu */}
-                <MobileMenu/>
-
+                    </div> */}
             </div>
-        )
-    }
-}
+          </div>
+          {/*Contact section end*/}
+        </div>
+        {/*====================  End of content page content  ====================*/}
 
+        {/* Footer */}
+        <Footer />
+
+        {/* Mobile Menu */}
+        <MobileMenu />
+      </div>
+    );
+  }
+}
 
 export default Contact;

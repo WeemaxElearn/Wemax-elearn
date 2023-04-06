@@ -18,18 +18,30 @@ class Footer extends Component {
                           <a href={`${process.env.PUBLIC_URL}/home-two`}>
                             <div className="logoHead">
                               <img
-                                src="/assets/img/logo/logonew.png"
+                                src="/assets/img/logo/weemax-logo.jpg"
                                 alt=""
                                 className="sticky-logo img-fluid"
                               />
-                              <h3>Ydemy</h3>
+                              <h3>WeeMax</h3>
                             </div>
                           </a>
                         </div>
                         <div className="footer-desc">
-                          Lorem ipsum dolor sit amet consect adipisici elit, sed
-                          do eiusmod tempor incididuk ut labore et dolore magna
-                          aliqua Ut enim
+                          Vision : "Our vision at WEEMAX is to revolutionize the
+                          fashion industry by providing high-quality, trendy
+                          clothing and accessories while also offering top-notch
+                          e-learning resources to empower our customers with
+                          knowledge and skills to pursue their passions and
+                          achieve their goals." Mission : "At WEEMAX, our
+                          mission is to create an immersive online shopping
+                          experience that seamlessly blends fashion and
+                          education. We are committed to sourcing and curating
+                          the latest and greatest fashion trends, while also
+                          providing expertly crafted e-learning content to
+                          empower our customers to learn and grow. We strive to
+                          create a community of passionate learners and fashion
+                          enthusiasts, who share a common goal of personal
+                          growth and self-improvement."
                         </div>
                       </div>
                     </div>
@@ -39,29 +51,33 @@ class Footer extends Component {
                         <h4 className="footer-widget__title">USEFUL LINKS</h4>
                         <ul className="footer-widget__navigation">
                           <li>
-                            <a href={`${process.env.PUBLIC_URL}/`}>Home</a>
-                          </li>
-                          <li>
-                            <a href={`${process.env.PUBLIC_URL}/`}>
-                              Company News
+                            <a href={`${process.env.PUBLIC_URL}/home-two`}>
+                              Home
                             </a>
                           </li>
                           <li>
-                            <a href={`${process.env.PUBLIC_URL}/`}>Projects</a>
+                            <a href={`${process.env.PUBLIC_URL}/about-us`}>
+                              About Us
+                            </a>
                           </li>
                           <li>
-                            <a href={`${process.env.PUBLIC_URL}/`}>Careers</a>
+                            <a href={`${process.env.PUBLIC_URL}/login/student`}>
+                              Login
+                            </a>
                           </li>
                           <li>
-                            <a href={`${process.env.PUBLIC_URL}/`}>
+                            <a href={`${process.env.PUBLIC_URL}/contact-us`}>
                               Contact Us
                             </a>
                           </li>
                         </ul>
                       </div>
                     </div>
-                    <div className="col-xl-2 offset-xl-1 col-lg-3 col-md-4">
-                      {/* footer widget */}
+                    {/* <div
+                      className="col-xl-2 offset-xl-1 col-lg-3 col-md-4 "
+                      style={{ visibility: "hidden" }}
+                    >
+                     
                       <div className="footer-widget">
                         <h4 className="footer-widget__title">USEFUL LINKS</h4>
                         <ul className="footer-widget__navigation">
@@ -88,24 +104,22 @@ class Footer extends Component {
                           </li>
                         </ul>
                       </div>
-                    </div>
+                    </div> */}
                     <div className="col-xl-2 offset-xl-1 col-lg-3 col-md-4">
                       {/* footer widget */}
                       <div className="footer-widget mb-0">
                         <h4 className="footer-widget__title">CONTACT US</h4>
                         <div className="footer-widget__content">
                           <p className="address">
-                            Your address goes here, street Crossroad123.
+                            220/8, Lakshmi Venkatesh Nagar, Hotel Rithanns
+                            backside, Karumathampatti, Coimbatore - 641659.
                           </p>
                           <ul className="contact-details">
                             <li>
-                              <span>P:</span>99 55 66 88 526
+                              <span>P:</span>7904834579
                             </li>
                             <li>
-                              <span>F:</span>55 44 77 62
-                            </li>
-                            <li>
-                              <span>E:</span>cons@email.com
+                              <span>E:</span>weemaxelearn@gmail.com
                             </li>
                           </ul>
                         </div>
@@ -118,7 +132,7 @@ class Footer extends Component {
           </div>
           <div className="footer-copyright-wrapper">
             <div className="footer-copyright text-center">
-              Copyright © 2019. All right reserved
+              WeeMax Copyright © 2023. All right reserved
             </div>
           </div>
         </div>

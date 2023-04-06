@@ -23,10 +23,10 @@ class HomeTwo extends Component {
         <VideoCta />
 
         {/* Project Slider */}
-        <ProjectSliderTwo />
+        {/* <ProjectSliderTwo /> */}
 
         {/* Service Tab */}
-        <ServiceTab />
+        {/* <ServiceTab /> */}
 
         {/* Testimonial Slider */}
         <TestimonialSlider />

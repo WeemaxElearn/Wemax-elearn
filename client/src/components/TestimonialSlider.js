@@ -9,52 +9,61 @@ class TestimonialSlider extends Component {
       speed: 1000,
       effect: "fade",
       autoplay: {
-        delay: 2000
+        delay: 2000,
       },
       pagination: {
         el: ".swiper-pagination",
         type: "bullets",
-        clickable: true
+        clickable: true,
       },
-      renderPagenation: () => <div className="swiper-pagination" />
+      renderPagenation: () => <div className="swiper-pagination" />,
     };
     let data = [
       {
-        testimonialImage: "1.jpg",
-        testimonialName: "Apurva Savaj",
+        testimonialImage: "t1.jpg",
+        testimonialName: "Nelson Mandela",
         testimonialDesignation: "Founder",
         testimonialText:
-          "Lorem ipsum dolor sit amet, consectetur adipisi elit sed do eiusmod tempor incididu ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
+          "Education is the most powerful weapon which you can use to change the world.",
       },
       {
-        testimonialImage: "3.jpg",
-        testimonialName: "Aman Singh",
+        testimonialImage: "t3.jpg",
+        testimonialName: "William Butler Yeats",
         testimonialDesignation: "Engineer",
         testimonialText:
-          "Ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco Lorem ipsum dolor sit amet."
+          "Education is not the filling of a pail, but the lighting of a fire.",
       },
       {
-        testimonialImage: "2.jpg",
-        testimonialName: "Aananya Pandey",
+        testimonialImage: "t2.jpg",
+        testimonialName: "Aristotle",
         testimonialDesignation: "CEO",
         testimonialText:
-          "consectetur adipisi elit sed do eiusmod tempor incididu ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco"
-      }
+          "The roots of education are bitter, but the fruit is sweet.",
+      },
     ];
 
     let DataList = data.map((val, i) => {
       return (
         <div className="swiper-slide testimonial-slider__single-slide" key={i}>
           <div className="author">
-            <div className="author__image">
+            <div
+              className="author__image"
+              style={{
+                height: "100px",
+                width: "100px",
+                borderRadius: "50px",
+                overflow: "hidden",
+              }}
+            >
               <img
                 src={`assets/img/testimonial/${val.testimonialImage}`}
                 alt=""
+                style={{ height: "100%", width: "100%" }}
               />
             </div>
             <div className="author__details">
               <h4 className="name">{val.testimonialName}</h4>
-              <div className="designation">{val.testimonialDesignation}</div>
+              {/* <div className="designation">{val.testimonialDesignation}</div> */}
             </div>
           </div>
           <div className="content">{val.testimonialText}</div>

@@ -9,8 +9,8 @@ import axios from "axios";
 import VideoList from "./VideoList";
 import VideoDetail from "./VideoDetail";
 import { jsPDF } from "jspdf";
-import { connect } from 'react-redux';
-import moment from 'moment';
+import { connect } from "react-redux";
+import moment from "moment";
 
 class BlogDetailsLeftSidebar extends Component {
   constructor(props) {
@@ -23,6 +23,8 @@ class BlogDetailsLeftSidebar extends Component {
       enrolled: "ADD TO COURSE LIST",
       buttonclass: "btn btn-success",
       addcourse: false,
+      course: {},
+      approved: false,
     };
 
     this.onClick = this.onClick.bind(this);
@@ -44,9 +46,10 @@ class BlogDetailsLeftSidebar extends Component {
       .then((response) => {
         if (response.data) {
           const { auth } = this.props;
-          let firstName = null, lastName = null;
-          if(auth){
-            const {first_name, last_name} = auth.users;
+          let firstName = null,
+            lastName = null;
+          if (auth) {
+            const { first_name, last_name } = auth.users;
             firstName = first_name;
             lastName = last_name;
           }
@@ -62,7 +65,9 @@ class BlogDetailsLeftSidebar extends Component {
         <span style="font-size:30px"><b>${
           firstName.toUpperCase() + " " + lastName.toUpperCase()
         }</b></span><br/><br/>
-        <span style="font-size:25px"><i>has completed the ${this.props.match.params.courseName} course successfully</i></span> <br/><br/>
+        <span style="font-size:25px"><i>has completed the ${
+          this.props.match.params.courseName
+        } course successfully</i></span> <br/><br/>
         <span style="font-size:25px"><i>dated: ${moment().format(
           "DD/MM/YYYY"
         )}</i></span><br>
@@ -94,7 +99,6 @@ class BlogDetailsLeftSidebar extends Component {
     const newTodo = {
       student: this.state.user,
       course: this.props.match.params.id,
-      approved: true,
     };
     if (this.state.buttonclass == "btn btn-success") {
       axios
@@ -111,6 +115,12 @@ class BlogDetailsLeftSidebar extends Component {
       console.log(this.state.buttonclass);
       toast.error("Course already added");
     }
+    setTimeout(
+      function () {
+        window.location.reload();
+      }.bind(this),
+      1300
+    );
   }
   async componentDidMount() {
     if (this.state.userRole == "student") {
@@ -118,43 +128,45 @@ class BlogDetailsLeftSidebar extends Component {
         addcourse: true,
       });
     }
-    
-    const response = await axios
-      .get("http://localhost:5000/lectures?id=" + this.props.match.params.id)
+
+    await axios
+      .get("http://localhost:5000/course?id=" + this.props.match.params.id)
       .then((result) => {
-        console.log(
-          "http://localhost:5000/checkenrollment?id=" +
-            this.state.user +
-            "&&courseid=" +
-            this.props.match.params.id
-        );
-        const responseEnrolled = axios
-          .get(
-            "http://localhost:5000/checkenrollment?id=" +
-              this.state.user +
-              "&&courseid=" +
-              this.props.match.params.id
-          )
-          .then((result) => {
-            if (result.data != undefined) {
-              this.setState({
-                enrolled: "ALREADY ENROLLED",
-                buttonclass: "btn btn-danger",
-              });
-            } else {
-              console.log(result.data);
-            }
-            //return result;
-          });
-        console.log(result.data[0]);
-        return result;
+        console.log(result);
+        this.setState({ course: result.data });
       });
 
-    this.setState({
-      videos: response.data,
-      selectedVideo: response.data[0],
-      status: "loading",
-    });
+    await axios
+      .get(
+        "http://localhost:5000/checkenrollment?id=" +
+          this.state.user +
+          "&&courseid=" +
+          this.props.match.params.id
+      )
+      .then(async (result) => {
+        if (result.data != undefined) {
+          if (result.data.approved === true) {
+            const response = await axios.get(
+              "http://localhost:5000/lectures?id=" + this.props.match.params.id
+            );
+            this.setState({
+              enrolled: "ALREADY ENROLLED",
+              buttonclass: "btn btn-danger",
+              videos: response.data,
+              selectedVideo: response.data[0],
+              approved: true,
+            });
+          } else {
+            this.setState({
+              enrolled: "WAITING FOR APPROVED",
+              buttonclass: "btn btn-info",
+            });
+          }
+        } else {
+          console.log(result.data);
+        }
+        //return result;
+      });
   }
 
   onVideoSelect = (video) => {
@@ -203,10 +215,22 @@ class BlogDetailsLeftSidebar extends Component {
                     <div className="ui grid">
                       <div className="ui row">
                         <div className="eleven wide column">
-                          <VideoDetail
-                            video={this.state.selectedVideo}
-                            videos={this.state.videos}
-                          />
+                          {this.state.approved === true && (
+                            <VideoDetail
+                              video={this.state.selectedVideo}
+                              videos={this.state.videos}
+                            />
+                          )}
+                          {this.state.approved === false && (
+                            <div>
+                              <img
+                                src={this.state.course.courseImage}
+                                width="500"
+                              ></img>
+                              <h1>{this.state.course.courseName}</h1>
+                              <h4>{this.state.course.courseDescription}</h4>
+                            </div>
+                          )}
                         </div>
 
                         <div className="five wide column">

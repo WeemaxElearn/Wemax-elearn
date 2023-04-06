@@ -38,7 +38,10 @@ class NavBar extends Component {
           <div className="header-area header-sticky header-sticky--default">
             <div className="header-area__desktop header-area__desktop--default">
               {/*=======  header navigation area  =======*/}
-              <div className="header-navigation-area default-bg">
+              <div
+                className="header-navigation-area"
+                style={{ backgroundColor: "black" }}
+              >
                 <div className="container">
                   <div className="row">
                     <div className="col-lg-12">
@@ -52,11 +55,11 @@ class NavBar extends Component {
                             <a href={`${process.env.PUBLIC_URL}/home-two`}>
                               <div className="logoHead">
                                 <img
-                                  src="/assets/img/logo/logonew.png"
+                                  src="/assets/img/logo/weemax-logo.png"
                                   alt=""
                                   className="sticky-logo img-fluid"
                                 />
-                                <h3>Ydemy</h3>
+                                <h3>WeeMax</h3>
                               </div>
                             </a>
 
@@ -234,7 +237,10 @@ class NavBar extends Component {
         <div className="header-area header-sticky header-sticky--default">
           <div className="header-area__desktop header-area__desktop--default">
             {/*=======  header navigation area  =======*/}
-            <div className="header-navigation-area default-bg">
+            <div
+              className="header-navigation-area"
+              style={{ backgroundColor: "black" }}
+            >
               <div className="container">
                 <div className="row">
                   <div className="col-lg-12">
@@ -247,12 +253,25 @@ class NavBar extends Component {
                         <nav className="main-nav">
                           <a href={`${process.env.PUBLIC_URL}/home-two`}>
                             <div className="logoHead">
-                              <img
-                                src="/assets/img/logo/logonew.png"
-                                alt=""
-                                className="sticky-logo img-fluid"
-                              />
-                              <h3>Ydemy</h3>
+                              <div
+                                style={{
+                                  borderRadius: "30px",
+                                  height: "40px",
+                                  overflow: "hidden",
+                                  width: "40px",
+                                  marginRight: "10px",
+                                }}
+                              >
+                                <img
+                                  src="/assets/img/logo/weemax-logo.jpg"
+                                  alt=""
+                                  className="sticky-logo img-fluid"
+                                  style={{
+                                    height: "100%",
+                                  }}
+                                />
+                              </div>
+                              <h3>WeeMax</h3>
                             </div>
                           </a>
 

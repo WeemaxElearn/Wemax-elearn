@@ -9,7 +9,10 @@ export default class EnrollList extends Component {
   constructor(props) {
     super(props);
     // initialize the state with an empty todos array
-    this.state = { todos: [], search: "" };
+    this.state = {
+      todos: [],
+      search: "",
+    };
     this.refreshEnrollList = this.refreshEnrollList.bind(this);
   }
 
@@ -23,44 +26,47 @@ export default class EnrollList extends Component {
     //to get data from mongo link
     axios
       .get("http://localhost:5000/enrollments/")
-      .then(response => {
+      .then((response) => {
         this.setState({ todos: response.data });
       })
-      .catch(function(error) {
+      .catch(function (error) {
         console.log(error);
       });
   }
 
-  delete(id) {
+  approve(id, approveOptions) {
     console.log(id);
     axios
-      .delete("http://localhost:5000/enrollment?id=" + id)
-      .then(result => {
+      .post("http://localhost:5000/enrollment", {
+        id: id,
+        approve: { approved: approveOptions },
+      })
+      .then((result) => {
         // this.forceUpdate()
 
         toast.success("Deleted successfully");
         // this.props.history.push("/showenroll/")
       })
-      .catch(err => {
+      .catch((err) => {
         // then print response status
         toast.error("Course not deleted");
       });
 
     setTimeout(
-      function() {
+      function () {
         window.location.reload();
       }.bind(this),
       1300
     );
   }
 
-  refreshEnrollList = res => this.setState({ todos: res.data.todos });
+  refreshEnrollList = (res) => this.setState({ todos: res.data.todos });
   render() {
     const divStyle = {
-      display: "contents"
+      display: "contents",
     };
     // var message='You selected '+this.state.todos._id
-    const Todo = props => (
+    const Todo = (props) => (
       <div style={divStyle}>
         <tr>
           <td>{props.todo.student.email}</td>
@@ -70,12 +76,22 @@ export default class EnrollList extends Component {
             {/* <button className="button muted-button" class="btn btn-success"><Link to={"users/edit/"+props.todo._id}>Edit</Link></button> */}
             {/* <a href={"showcourses/edit/"+props.todo._id} class="btn btn-primary btn active" role="button" aria-pressed="true">Delete</a> */}
             {/* <link to='' refresh="true"> */}
-            <button
-              onClick={this.delete.bind(this, props.todo._id)}
-              class="btn btn-danger"
-            >
-              Delete
-            </button>
+            {props.todo.approved === true && (
+              <button
+                onClick={this.approve.bind(this, props.todo._id, false)}
+                className={"btn btn-danger"}
+              >
+                REMOVE
+              </button>
+            )}
+            {props.todo.approved == false && (
+              <button
+                onClick={this.approve.bind(this, props.todo._id, true)}
+                className={"btn btn-success"}
+              >
+                APPROVE
+              </button>
+            )}
             {/* </link> */}
             {/* <p>{message}</p> */}
           </td>
@@ -83,7 +99,7 @@ export default class EnrollList extends Component {
       </div>
     );
     //used in filtering the content coming from database mongo
-    let filteredusers = this.state.todos.filter(enroll => {
+    let filteredusers = this.state.todos.filter((enroll) => {
       return (
         enroll.student.email.indexOf(this.state.search) !== -1 ||
         enroll.course.courseName.indexOf(this.state.search) !== -1
@@ -98,7 +114,7 @@ export default class EnrollList extends Component {
             padding: "20px",
             display: "flex",
             flexDirection: "row",
-            justifyContent: "space-between"
+            justifyContent: "space-between",
           }}
         >
           <a
@@ -114,7 +130,7 @@ export default class EnrollList extends Component {
             style={{
               marginLeft: "-200px",
               textDecoration: "underline",
-              color: "#F0542D"
+              color: "#F0542D",
             }}
           >
             Enrollment List
@@ -133,7 +149,7 @@ export default class EnrollList extends Component {
           <table
             className="table table-striped"
             id="usertable"
-            ref={el => (this.el = el)}
+            ref={(el) => (this.el = el)}
             data-order='[[ 1, "asc" ]]'
             data-page-length="25"
           >
@@ -146,7 +162,7 @@ export default class EnrollList extends Component {
             </thead>
             <tbody>
               {/* displaying data coming  */}
-              {filteredusers.map(function(currentTodo, i) {
+              {filteredusers.map(function (currentTodo, i) {
                 return <Todo todo={currentTodo} key={i} />;
               })}
             </tbody>
