@@ -71,13 +71,13 @@ class Register extends Component {
                   <div className="card-body">
                     <div className="logoHead">
                       <img
-                        src="/assets/img/logo/logonew.png"
+                        src="/assets/img/logo/weemax-logo.jpg"
                         alt=""
                         height="60px"
                         width="60px"
                         className="sticky-logo img-fluid"
                       />
-                      <h3>Ydemy</h3>
+                      <h3>WEEMAX</h3>
                     </div>
                     <h4 className="mb-3 f-w-400">Sign up into your account</h4>
                     <form noValidate onSubmit={this.onSubmit}>

@@ -59,7 +59,7 @@ class NavBar extends Component {
                                   alt=""
                                   className="sticky-logo img-fluid"
                                 />
-                                <h3>WeeMax</h3>
+                                <h3>WEEMAX</h3>
                               </div>
                             </a>
 
@@ -271,7 +271,7 @@ class NavBar extends Component {
                                   }}
                                 />
                               </div>
-                              <h3>WeeMax</h3>
+                              <h3>WEEMAX</h3>
                             </div>
                           </a>
 
