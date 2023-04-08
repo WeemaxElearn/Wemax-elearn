@@ -247,7 +247,7 @@ class BlogDetailsLeftSidebar extends Component {
 
           const opt = {
             margin: 0,
-            filename: "cer.pdf",
+            filename: "weemax-" + courseName + "-certificate.pdf",
             image: { type: "jpeg", quality: 1 },
             html2canvas: { scale: 2 },
             jsPDF: { unit: "mm", format: [297, 210], orientation: "landscape" },
