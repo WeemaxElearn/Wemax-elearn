@@ -8,6 +8,8 @@
     />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#000000" />
+
+    <meta name="devtools" content="disabled" />
     <!--
       manifest.json provides metadata used when your web app is installed on a
       user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
@@ -83,5 +85,16 @@
     <script src="assets/js/vendor/jquery-3.3.1.min.js"></script>
     <script src="assets/js/main.js"></script>
     <script src="assets/js/popper.min.js"></script>
+
+    <script>
+      document.addEventListener("keydown", function (event) {
+        if (event.ctrlKey && event.shiftKey && event.keyCode === 73) {
+          event.preventDefault();
+        }
+      });
+      document.addEventListener("contextmenu", function (e) {
+        e.preventDefault();
+      });
+    </script>
   </body>
 </html>
