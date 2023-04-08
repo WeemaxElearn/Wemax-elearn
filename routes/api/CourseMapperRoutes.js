@@ -203,50 +203,25 @@ router.post("/printcertificate", (req, res) => {
       },
     });
   }
-  const { userId, courseId, videoLength } = req.body;
+  const { userId, courseId } = req.body;
   coruseMapperModel
     .find({ userId: userId, courseId: courseId })
     .then((response) => {
       if (response) {
-        if (response.length == videoLength) {
-          
-          const data = response.filter((item) => {
-            if (item.completed == false) {
-              return item;
-            }
-          });
-          if (data.length > 0) {
-            return res.status(400).send({
-              status: 400,
+        userModel
+          .findOne({ _id: userId })
+          .then((response) => {
+            return res.status(200).send({
+              status: 200,
               data: {
-                message:
-                  "you can not print the certificate. please completed all videos",
+                message: "you can print the certificate",
+                userInfo: response,
               },
             });
-          } else {
-            userModel
-              .findOne({ _id: userId })
-              .then((response) => {
-                return res.status(200).send({
-                  status: 200,
-                  data: {
-                    message: "you can print the certificate",
-                    userInfo: response,
-                  },
-                });
-              })
-              .catch((err) => {
-                console.log(`Err while getting the user ${err}`);
-              });
-          }
-        } else {
-          return res.status(400).send({
-            status: 400,
-            data: {
-              message: "you can not print the certificate.completed all videos",
-            },
+          })
+          .catch((err) => {
+            console.log(`Err while getting the user ${err}`);
           });
-        }
       }
     })
     .catch((err) => {

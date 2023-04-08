@@ -36,9 +36,16 @@
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
     <title>WEEMAX - E-Learning Portal</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+      integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
+
     <!-- activate preloader by removing the comment below -->
     <!--
     <div class="preloader-activate preloader-active">
@@ -52,6 +59,7 @@
     </div>
     -->
     <div id="root"></div>
+
     <!--
       This HTML file is a template.
       If you open it directly in the browser, you will see an empty page.
@@ -87,14 +95,14 @@
     <script src="assets/js/popper.min.js"></script>
 
     <script>
-      document.addEventListener("keydown", function (event) {
-        if (event.ctrlKey && event.shiftKey && event.keyCode === 73) {
-          event.preventDefault();
-        }
-      });
-      document.addEventListener("contextmenu", function (e) {
-        e.preventDefault();
-      });
+      // document.addEventListener("keydown", function (event) {
+      //   if (event.ctrlKey && event.shiftKey && event.keyCode === 73) {
+      //     event.preventDefault();
+      //   }
+      // });
+      // document.addEventListener("contextmenu", function (e) {
+      //   e.preventDefault();
+      // });
     </script>
   </body>
 </html>

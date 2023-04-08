@@ -1,4 +1,5 @@
 import React, { Component, useRef } from "react";
+import { useLocation } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import PropTypes from "prop-types";
 import NavBar from "../components/NavBar";
@@ -37,11 +38,18 @@ class BlogDetailsLeftSidebar extends Component {
       courseId: this.props.match.params.id,
       videoLength: this.state.videos.length,
     };
+    var courseName;
+    axios
+      .get("http://localhost:5000/course?id=" + this.props.match.params.id)
+      .then((result) => {
+        console.log(result);
+        courseName = result.data.courseName;
+      });
+
     axios
       .post("http://localhost:5000/printcertificate", {
         userId: data.userId,
         courseId: data.courseId,
-        videoLength: data.videoLength,
       })
       .then((response) => {
         if (response.data) {
@@ -52,35 +60,212 @@ class BlogDetailsLeftSidebar extends Component {
             const { first_name, last_name } = auth.users;
             firstName = first_name;
             lastName = last_name;
+          } else {
+            return;
           }
-          var printWindow = window.open("", "", "height=400,width=800");
-          printWindow.document.write("<html><head><title>DIV Contents</title>");
-          printWindow.document.write("</head><body >");
-          printWindow.document
-            .write(`<div style="width:750px; height:550px; padding:20px; text-align:center; border: 5px solid #787878">
-        <span style="font-size:50px; font-weight:bold">Certificate of Completion</span>
-        <br><br>
-        <span style="font-size:25px"><i>This is to certify that</i></span>
-        <br><br>
-        <span style="font-size:30px"><b>${
-          firstName.toUpperCase() + " " + lastName.toUpperCase()
-        }</b></span><br/><br/>
-        <span style="font-size:25px"><i>has completed the ${
-          this.props.match.params.courseName
-        } course successfully</i></span> <br/><br/>
-        <span style="font-size:25px"><i>dated: ${moment().format(
-          "DD/MM/YYYY"
-        )}</i></span><br>
- </div>`);
-          printWindow.document.write("</body></html>");
-          printWindow.document.close();
-          printWindow.print();
+          const nowDate = new Date();
+          const parsedDate = `${nowDate.getDate()}/${
+            nowDate.getMonth() + 1
+          }/${nowDate.getFullYear()}`;
+
+          console.log(this.props.match.params.id);
+
+          const htmlString = `<div
+    id="certificate-print-contain"
+    style="height: 793px; width: 1122px; padding: 40px; position: relative; top: 0; left: 0"
+  >
+    <div
+      style="
+        height: 100%;
+        width: 100%;
+        border: 4px solid #050a30;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-around;
+        padding: 0 40px;
+      "
+    >
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <h1
+          style="
+            font-size: 70px;
+            font-weight: 700;
+            text-align: center;
+            line-height: 80px;
+            font-family: Arial, Helvetica, sans-serif;
+          "
+        >
+          CERTIFICATE
+        </h1>
+        <span
+          style="
+            font-size: 25px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+          "
+        >
+          OF COMPLETION
+        </span>
+      </div>
+
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <h2
+          style="
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 5px;
+            font-family: Arial, Helvetica, sans-serif;
+            margin-bottom: 30px;
+          "
+        >
+          THE CERTIFICATE IS AWARDED TO
+        </h2>
+        <h1
+          style="
+            font-size: 60px;
+            font-weight: 600;
+            text-align: center;
+            letter-spacing: 5px;
+            font-family: 'Times New Roman', Times, serif;
+            text-transform: uppercase;
+            text-align: center;
+            margin-bottom: 20px;
+          "
+        >
+          ${firstName} ${lastName}
+        </h1>
+        <p
+          style="
+            text-align: center;
+            font-size: 18px;
+            font-weight: 500;
+            font-family: Arial, Helvetica, sans-serif;
+          "
+        >
+          For successfully completed "${courseName}" online
+          course on date ${parsedDate}
+        </p>
+      </div>
+      <div
+        style="
+          width: 100%;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+        "
+      >
+        <img src="/assets/img/badge.png" style="height: 150px" />
+        <img src="/assets/img/logo.jpg" style="height: 50px" alt="Weemax" />
+      </div>
+    </div>
+    <div
+      style="
+        height: 100%;
+        width: 100%;
+        background: transparent;
+        position: absolute;
+        top: 0;
+        left: 0;
+        overflow: hidden;
+      "
+    >
+      <div
+        style="
+          height: 180px;
+          width: 180px;
+          background: #2e266d;
+          transform: rotate(45deg);
+          position: absolute;
+          margin-top: -100px;
+          margin-left: 27px;
+          z-index: 9999;
+        "
+      ></div>
+      <div
+        style="
+          height: 180px;
+          width: 180px;
+          background: #b1d4e0;
+          transform: rotate(45deg);
+          position: absolute;
+          margin-top: -10px;
+          margin-left: -130px;
+        "
+      ></div>
+      <div
+        style="
+          height: 180px;
+          width: 180px;
+          background: #2e266d;
+          transform: rotate(45deg);
+          position: absolute;
+          bottom: -90px;
+          right: 40px;
+          z-index: 9999;
+        "
+      ></div>
+      <div
+        style="
+          height: 180px;
+          width: 180px;
+          background: #b1d4e0;
+          transform: rotate(45deg);
+          position: absolute;
+          bottom: -10px;
+          right: -110px;
+        "
+      ></div>
+    </div>
+  </div>`;
+          const rootDiv = document.getElementById("root");
+
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(htmlString, "text/html");
+          const domElement = doc.body.firstChild;
+
+          document.getElementsByTagName("body")[0].appendChild(domElement);
+
+          rootDiv.remove();
+
+          const opt = {
+            margin: 0,
+            filename: "cer.pdf",
+            image: { type: "jpeg", quality: 1 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "mm", format: [297, 210], orientation: "landscape" },
+          };
+
+          // eslint-disable-next-line no-undef
+          html2pdf().set(opt).from(domElement).save();
+          setTimeout(() => {
+            window.location.replace(window.location.href);
+          }, 2000);
         } else {
           toast.warn("Something went wrong while printing the certificate");
+          return;
         }
       })
       .catch(function (error) {
         toast.error("Please complete the course to get the certificate");
+        return;
       });
   }
   onClick(e) {
