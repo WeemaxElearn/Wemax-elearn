@@ -54,13 +54,26 @@ class NavBar extends Component {
                           <nav className="main-nav">
                             <a href={`${process.env.PUBLIC_URL}/home-two`}>
                               <div className="logoHead">
+                              <div
+                                style={{
+                                  borderRadius: "30px",
+                                  height: "40px",
+                                  overflow: "hidden",
+                                  width: "40px",
+                                  marginRight: "10px",
+                                }}
+                              >
                                 <img
-                                  src="/assets/img/logo/weemax-logo.png"
+                                  src="/assets/img/logo/weemax-logo.jpg"
                                   alt=""
                                   className="sticky-logo img-fluid"
+                                  style={{
+                                    height: "100%",
+                                  }}
                                 />
-                                <h3>WEEMAX</h3>
                               </div>
+                              <h3>WEEMAX</h3>
+                            </div>
                             </a>
 
                             <ul id="main-nav-ul">
@@ -225,7 +238,7 @@ class NavBar extends Component {
         </li>
         <li>
           <Link className="nav-link" to="/login/instructor">
-            Teach On Ydemy
+            Learn On WEEMAX
           </Link>
         </li>
       </React.Fragment>
