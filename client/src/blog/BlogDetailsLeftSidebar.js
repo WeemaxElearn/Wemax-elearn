@@ -446,13 +446,15 @@ class BlogDetailsLeftSidebar extends Component {
                   <br></br>
                   {this.state.userRole === "student" && (
                     <div>
-                      <button
-                        type="button"
-                        onClick={this.getCertificate}
-                        className={"btn btn-success"}
-                      >
-                        Print Certificate
-                      </button>
+                      {this.state.approved === true && (
+                        <button
+                          type="button"
+                          onClick={this.getCertificate}
+                          className={"btn btn-success"}
+                        >
+                          Print Certificate
+                        </button>
+                      )}
                     </div>
                   )}
                 </div>
