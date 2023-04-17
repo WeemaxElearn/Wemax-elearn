@@ -24,7 +24,7 @@ router.post("/users/register", (req, res) => {
     return res.status(400).json(errors);
   }
 
-  User.findOne({ email: req.body.email }).then(user => {
+  User.findOne({ email: req.body.email }).then((user) => {
     if (user) {
       errors.email = "Email already exists";
       return res.status(400).json(errors);
@@ -32,7 +32,7 @@ router.post("/users/register", (req, res) => {
       const avatar = gravatar.url(req.body.email, {
         s: "200", //Size
         r: "pg", //Rating
-        d: "mm" //Default
+        d: "mm", //Default
       });
 
       const newUser = new User({
@@ -40,7 +40,7 @@ router.post("/users/register", (req, res) => {
         last_name: req.body.last_name,
         email: req.body.email,
         password: req.body.password,
-        role: req.body.role
+        role: req.body.role,
       });
 
       bcrypt.genSalt(10, (err, salt) => {
@@ -49,8 +49,8 @@ router.post("/users/register", (req, res) => {
           newUser.password = hash;
           newUser
             .save()
-            .then(user => res.json(user))
-            .catch(err => console.log(err));
+            .then((user) => res.json(user))
+            .catch((err) => console.log(err));
         });
       });
     }
@@ -73,13 +73,14 @@ router.post("/users/login", (req, res) => {
   const password = req.body.password;
 
   //Find user by email
-  User.findOne({ email }).then(user => {
+  User.findOne({ email }).then((user) => {
+    console.log("user");
     if (!user) {
       errors.email = "User not found";
       return res.status(404).json(errors);
     }
     //check password
-    bcrypt.compare(password, user.password).then(isMatch => {
+    bcrypt.compare(password, user.password).then((isMatch) => {
       if (isMatch) {
         //User Match
 
@@ -89,7 +90,7 @@ router.post("/users/login", (req, res) => {
           first_name: user.first_name,
           last_name: user.last_name,
           avatar: user.avatar,
-          role: user.role
+          role: user.role,
         };
         //Sign token
         jwt.sign(
@@ -101,7 +102,7 @@ router.post("/users/login", (req, res) => {
               success: true,
               token: "Bearer " + token,
               first_name: user.first_name,
-              last_name: user.last_name
+              last_name: user.last_name,
             });
           }
         );
@@ -125,7 +126,7 @@ router.get(
     res.json({
       id: req.user.id,
       first_name: req.user.first_name,
-      email: req.user.email
+      email: req.user.email,
     });
   }
 );
@@ -134,88 +135,82 @@ router.get("/users", (req, res) => {
   //var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
   User.find()
-      .then(doc => {
-         // res.setHeader('Access-Control-Expose-Headers', 'Content-Range');
-          res.setHeader('Content-Range', 'users 0-5/5');
-          res.json(doc)
-          
-      })
-      .catch(err => {
-          res.status(500).json(err)
-      })
-      
-          
-})
+    .then((doc) => {
+      // res.setHeader('Access-Control-Expose-Headers', 'Content-Range');
+      res.setHeader("Content-Range", "users 0-5/5");
+      res.json(doc);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
-router.post('/user', (req, res)=>{
+router.post("/user", (req, res) => {
   //req.body
-  if(!req.body){
-      return res.status(400).send("request body is missing")
+  if (!req.body) {
+    return res.status(400).send("request body is missing");
   }
 
-  let model=new User(req.body)
-  model.save()
-  .then(doc=>{
-      if(!doc ||doc.length===0){
-          return res.status(500).send(doc)
+  let model = new User(req.body);
+  model
+    .save()
+    .then((doc) => {
+      if (!doc || doc.length === 0) {
+        return res.status(500).send(doc);
       }
-      res.status(200).send(doc)
+      res.status(200).send(doc);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
-  })
-  .catch(err=>{
-      res.status(500).json(err)
-  })
-})
-
-router.get('/user', (req, res) => {
+router.get("/user", (req, res) => {
   //var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
   User.findOne({
-      _id: req.query.id
+    _id: req.query.id,
   })
-      .then(doc => {
-          
-          res.json(doc)
-          
-      })
-      .catch(err => {
-          res.status(500).json(err)
-      })
-})
+    .then((doc) => {
+      res.json(doc);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
-
-router.put('/user/', (req, res) => {
+router.put("/user/", (req, res) => {
   //var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
-  User.findOneAndUpdate({
-      _id: req.query.id
-  }, req.body,{
-      new:true
-  })
-      .then(doc => {
-          
-          res.json(doc)
-          
-      })
-      .catch(err => {
-          res.status(500).json(err)
-      })
-})
+  User.findOneAndUpdate(
+    {
+      _id: req.query.id,
+    },
+    req.body,
+    {
+      new: true,
+    }
+  )
+    .then((doc) => {
+      res.json(doc);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
-router.delete('/user', (req, res) => {
+router.delete("/user", (req, res) => {
   //var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
 
   User.findOneAndRemove({
-      _id: req.query.id
+    _id: req.query.id,
   })
-      .then(doc => {
-          
-          res.json(doc)
-          
-      })
-      .catch(err => {
-          res.status(500).json(err)
-      })
-})
+    .then((doc) => {
+      res.json(doc);
+    })
+    .catch((err) => {
+      res.status(500).json(err);
+    });
+});
 
 module.exports = router;

@@ -37,7 +37,7 @@ app.use(bodyParser.json({ limit: "50mb", extended: true }));
 
 //Connect to mongodb through mongoose
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log(err));
 
