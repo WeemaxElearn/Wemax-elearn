@@ -1,30 +1,30 @@
 [
-	{
-		"_id": "26039234-0571-4f6e-8494-9a820f9028a6",
-		"colId": "history",
-		"containerId": "",
-		"name": "https://weemaxelearn.in/api/user/login",
-		"url": "https://weemaxelearn.in/api/user/login",
-		"method": "POST",
-		"sortNum": 0,
-		"created": "2023-04-16T07:52:00.352Z",
-		"modified": "2023-04-16T07:52:00.352Z",
-		"headers": [],
-		"params": [],
-		"tests": []
-	},
-	{
-		"_id": "230afaf5-fb95-4168-9ecf-704ee9cfaaeb",
-		"colId": "history",
-		"containerId": "",
-		"name": "https://weemaxelearn.in/api/users/login",
-		"url": "https://weemaxelearn.in/api/lectures/lecturevideo/hellomachskjfdkfkerh",
-		"method": "GET",
-		"sortNum": 0,
-		"created": "2023-04-16T07:52:09.899Z",
-		"modified": "2023-04-16T12:14:30.523Z",
-		"headers": [],
-		"params": [],
-		"tests": []
-	}
+  {
+    "_id": "26039234-0571-4f6e-8494-9a820f9028a6",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:5000/user/login",
+    "url": "http://localhost:5000/user/login",
+    "method": "POST",
+    "sortNum": 0,
+    "created": "2023-04-16T07:52:00.352Z",
+    "modified": "2023-04-16T07:52:00.352Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  },
+  {
+    "_id": "230afaf5-fb95-4168-9ecf-704ee9cfaaeb",
+    "colId": "history",
+    "containerId": "",
+    "name": "http://localhost:5000/users/login",
+    "url": "http://localhost:5000/lectures/lecturevideo/hellomachskjfdkfkerh",
+    "method": "GET",
+    "sortNum": 0,
+    "created": "2023-04-16T07:52:09.899Z",
+    "modified": "2023-04-16T12:14:30.523Z",
+    "headers": [],
+    "params": [],
+    "tests": []
+  }
 ]
