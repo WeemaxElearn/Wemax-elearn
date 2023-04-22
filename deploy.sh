@@ -9,3 +9,4 @@ cd ..
 npm install
 pm2 start server.js -n "Weemax Api"
 echo "Deployed Successfully"
+pm2 save
