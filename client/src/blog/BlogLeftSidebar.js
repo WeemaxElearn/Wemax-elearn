@@ -79,7 +79,7 @@ class BlogLeftSidebar extends Component {
         {/*====================  End of blog page content  ====================*/}
 
         {/* Brand logo */}
-        <BrandLogoSlider background="grey-bg" />
+        {/* <BrandLogoSlider background="grey-bg" /> */}
 
         {/* Footer */}
         <Footer />

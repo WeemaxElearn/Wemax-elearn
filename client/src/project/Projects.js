@@ -11,57 +11,57 @@ class Projects extends Component {
         img: "project-1.jpg",
         projectTitle: "Land Minning",
         projectSubtitle:
-          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor"
+          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
       },
       {
         pageLink: "project-details",
         img: "project-2.jpg",
         projectTitle: "Work Management",
         projectSubtitle:
-          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor"
+          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
       },
       {
         pageLink: "project-details",
         img: "project-3.jpg",
         projectTitle: "Material Engineering",
         projectSubtitle:
-          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor"
+          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
       },
       {
         pageLink: "project-details",
         img: "project-4.jpg",
         projectTitle: "Power and Energy",
         projectSubtitle:
-          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor"
+          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
       },
       {
         pageLink: "project-details",
         img: "project-5.jpg",
         projectTitle: "Land Minning",
         projectSubtitle:
-          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor"
+          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
       },
       {
         pageLink: "project-details",
         img: "project-6.jpg",
         projectTitle: "Work Management",
         projectSubtitle:
-          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor"
+          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
       },
       {
         pageLink: "project-details",
         img: "project-7.jpg",
         projectTitle: "Material Engineering",
         projectSubtitle:
-          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor"
+          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
       },
       {
         pageLink: "project-details",
         img: "project-8.jpg",
         projectTitle: "Power and Energy",
         projectSubtitle:
-          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor"
-      }
+          "Lorem ipsum dolor sit amet consect adipisi elit sed do eiusm tempor",
+      },
     ];
 
     let Datalist = data.map((val, i) => {
@@ -172,7 +172,7 @@ class Projects extends Component {
         {/*====================  End of project page content  ====================*/}
 
         {/* Brand logo */}
-        <BrandLogoSlider background="grey-bg" />
+        {/* <BrandLogoSlider background="grey-bg" /> */}
 
         {/* Footer */}
         <Footer />

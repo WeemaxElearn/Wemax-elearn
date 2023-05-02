@@ -34,7 +34,7 @@ class HomeTwo extends Component {
         {/* Team job */}
 
         {/* Brand logo */}
-        <BrandLogoSlider background="grey-bg" />
+        {/* <BrandLogoSlider background="grey-bg" /> */}
 
         {/* Blog grid */}
 
