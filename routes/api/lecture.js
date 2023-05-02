@@ -66,9 +66,10 @@ router.post("/lectures/addleacture", async function (req, res) {
 });
 
 router.get("/lectures/lecturevideo/:name", async function (req, res) {
-  var filePath = __dirname.replace("routes\\api", "");
+  //      var filePath = __dirname.replace('routes\\api', '');
+
   try {
-    res.sendFile("/lecture-video/" + req.params.name);
+    res.sendFile("/root/deploy/Wemax-elearn/lecture-video/" + req.params.name);
   } catch (err) {
     console.log(err);
     res.status(500).send(err);
