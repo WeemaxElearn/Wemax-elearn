@@ -46,7 +46,7 @@ class Contact extends Component {
                   </div>
                 </div>
               </div>
-              <center>
+              {/* <center>
                 <a href="http://wa.me/917904834579" className="w-25">
                   <button
                     style={{ fontSize: "22px" }}
@@ -55,7 +55,7 @@ class Contact extends Component {
                     Whatsapp
                   </button>
                 </a>
-              </center>
+              </center> */}
               {/* <div className="row">
                         <div className="col-lg-4 col-12">
                         <div className="contact-information">
